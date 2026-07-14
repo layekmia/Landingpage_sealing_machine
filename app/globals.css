@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — Tailwind v4 theme
+   ============================================================ */
+@theme {
+  /* Brand colors */
+  --color-primary:        #E85D04;
+  --color-primary-hover:  #C44D04;
+  --color-primary-light:  #FFF4EE;
+  --color-primary-lighter: #FEF9F5;
+
+  /* Neutrals */
+  --color-secondary:      #1A1A2E;
+  --color-bg:             #FAFAFA;
+  --color-surface:        #FFFFFF;
+  --color-border:         #E8E8EE;
+  --color-border-light:   #F0F0F6;
+  --color-muted:          #6B7280;
+  --color-muted-light:    #9CA3AF;
+
+  /* Feedback */
+  --color-success:        #16A34A;
+  --color-success-light:  #DCFCE7;
+  --color-success-bg:     #F0FDF4;
+  --color-star:           #F59E0B;
+  --color-error:          #DC2626;
+
+  /* Typography */
+  --font-sans: var(--font-bengali), 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+
+  /* Border radius */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-sm: 0 1px 4px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-md: 0 4px 16px 0 rgb(0 0 0 / 0.08);
+  --shadow-lg: 0 8px 32px 0 rgb(0 0 0 / 0.10);
+  --shadow-xl: 0 16px 48px 0 rgb(0 0 0 / 0.12);
+}
+
+/* ============================================================
+   BASE RESETS
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-secondary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+input, textarea, select, button {
+  font-family: inherit;
+}
+
+/* ============================================================
+   COMPONENT UTILITIES
+   ============================================================ */
+
+/* Primary CTA button */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgb(232 93 4 / 0.35);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 6px 24px rgb(232 93 4 / 0.45);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 12px rgb(232 93 4 / 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Card */
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Section container */
+.section-container {
+  max-width: 520px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* Section heading */
+.section-heading {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+}
+
+/* Form input */
+.form-input {
+  width: 100%;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  color: var(--color-secondary);
+  background: var(--color-surface);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  appearance: none;
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(232 93 4 / 0.12);
+}
+
+.form-input::placeholder {
+  color: var(--color-muted-light);
+}
+
+/* Form label */
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin-bottom: 0.4rem;
+}
+
+/* Star rating */
+.star {
+  color: var(--color-star);
+  font-size: 1.125rem;
+}
+
+/* Badge pill */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.9rem;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid rgb(232 93 4 / 0.2);
+}
+
+/* Use case chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1rem;
+  background: var(--color-primary-lighter);
+  color: var(--color-primary-hover);
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid rgb(232 93 4 / 0.18);
+  white-space: nowrap;
+}
+
+/* Sticky bar — only shows on mobile */
+.sticky-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -4px 24px rgb(0 0 0 / 0.08);
+  padding: 0.875rem 1.25rem;
+  padding-bottom: calc(0.875rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 1024px) {
+  .sticky-bar {
+    display: none;
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease both;
+}
+
+/* Thumbnail active ring */
+.thumb-active {
+  outline: 2.5px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Bottom padding to avoid sticky bar overlap */
+.pb-sticky {
+  padding-bottom: 90px;
+}
+
+@media (min-width: 1024px) {
+  .pb-sticky {
+    padding-bottom: 0;
+  }
+}

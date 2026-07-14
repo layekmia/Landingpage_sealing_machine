@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Order {
+  id             String   @id @default(cuid())
+  productSlug    String
+  name           String
+  phone          String
+  address        String
+  district       String
+  quantity       Int
+  productPrice   Int
+  deliveryCharge Int
+  total          Int
+  status         String   @default("pending")
+  orderNumber    String?  @unique
+  createdAt      DateTime @default(now())
+
+  @@index([productSlug])
+  @@index([createdAt])
+}
