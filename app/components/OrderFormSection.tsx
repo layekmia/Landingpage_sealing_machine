@@ -88,7 +88,17 @@ export default function OrderFormSection({ product }: Props) {
       const data = await res.json();
 
       if (data.success) {
-        setSuccess({ orderId: data.orderId, orderNumber: data.orderNumber, total: data.total ?? grandTotal });
+        const finalTotal = data.total ?? grandTotal;
+        setSuccess({ orderId: data.orderId, orderNumber: data.orderNumber, total: finalTotal });
+        
+        // Facebook Pixel Purchase Tracking
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('track', 'Purchase', {
+            value: finalTotal,
+            currency: 'BDT'
+          });
+        }
+
         // Scroll success message into view
         setTimeout(() => {
           document
